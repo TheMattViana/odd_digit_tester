@@ -1,0 +1,71 @@
+Project: Create a "PIN Upgrade Security Study" Web Interface
+
+Context: I need a functional web interface to test user behavior when upgrading PINs, based on the research paper "The Same PIN, Just Longer." In the original paper, users upgraded from 4 to 6 digits. In this version, we are testing a 5-digit to 7-digit upgrade using a constrained keypad.
+
+Tech Stack: HTML, CSS (Tailwind preferred), JavaScript (or React).
+
+1. UI/Visual Design:
+
+Aesthetic: Mimic the clean, minimal design of the iOS Lock Screen (blur background, white circular buttons with thin outlines).
+
+The Keypad: This is a crucial constraint. The keypad must only display odd numbers (1, 3, 5, 7, 9). Arrange them in a balanced grid (e.g., two rows of 3, or a custom circle layout). Do not include even numbers.
+
+Feedback: Display empty hollow circles at the top representing the digits. When a user taps a number, the circle should fill white (standard iOS behavior).
+
+2. Functional Logic & Flow (The "Sequence"): The app should guide the user through a two-step "Upgrade" sequence, similar to the methodology in the Munyendo et al. paper:
+
+Step 1 (The Baseline):
+
+Title: "Create a 5-digit PIN".
+
+Constraint: User must enter exactly 5 digits using the odd-number keypad.
+
+Action: Upon the 5th digit, store the PIN and automatically transition to an interstitial screen.
+
+Step 2 (The Upgrade Justification):
+
+Show a message based on the "Device Upgrade" treatment from the paper.
+
+Text: "Imagine you are upgrading your smartphone to a system that requires higher security. You must now select a 7-digit PIN."
+
+Button: "Continue."
+
+Step 3 (The Upgrade):
+
+Title: "Create a 7-digit PIN".
+
+Constraint: User must enter exactly 7 digits.
+
+Action: Upon the 7th digit, submit and display the "Results" modal.
+
+3. Analysis & Results (The "Targeted Attack" Logic): Once the user finishes, display a "Security Analysis" card that checks for the vulnerabilities described in the paper:
+
+Targeted Append Check: Did the user simply take their 5-digit PIN and add 2 digits to the end? (This was a major vulnerability found in the paper ).
+
+Repetition Check: Did they use repeated patterns (e.g., 1111111)?
+
+Subsequence Check: Does the 7-digit PIN contain the 5-digit PIN entirely?
+
+4. Code Requirements:
+
+Make the design responsive (mobile-first).
+
+Use local state to store the PINs (no backend needed for this prototype).
+
+Ensure the keypad has active states (button press animations).
+
+---
+
+The regular 0 - 9 possible digits should still be a thing, the only odd-ness are the number of digits used
+
+---
+
+this has to be very phone friendly for best experience
+
+---
+
+add the letters under the buttons like abc under 1, and make the numbers white so its easier to see
+
+---
+
+write all prompts I used in a prompts.txt file
