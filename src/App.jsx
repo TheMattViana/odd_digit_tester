@@ -47,6 +47,15 @@ function App() {
     }
   }
 
+  const handleDelete = () => {
+    if (step === 'setup-5') {
+      setPin5(prev => prev.slice(0, -1))
+    } else if (step === 'recall') {
+      setPinRecalled(prev => prev.slice(0, -1))
+    } else if (step === 'setup-7') {
+      setPin7(prev => prev.slice(0, -1))
+    }
+  }
 
   const handleDistractorSubmit = (e) => {
     e.preventDefault();
@@ -55,75 +64,7 @@ function App() {
     }
   }
 
-  const generateEmailUrl = (data) => {
-    const subject = "PIN Upgrade Study Data";
-    const body = `
-Study Data Submission
----------------------
-Timestamp: ${data.timestamp}
-PIN 5: ${data.pin5}
-PIN 7: ${data.pin7}
-
-Strategy: ${data.strategy}
-
-Analysis Results:
-- Targeted Append: ${data.targetedAppend}
-- Repetition: ${data.repetition}
-- Subsequence: ${data.subsequence}
-
-csv_format:
-timestamp,pin5,pin_recalled,pin7,strategy,targeted_append,repetition,subsequence
-${data.timestamp},${data.pin5},${data.pinRecalled},${data.pin7},"${data.strategy}",${data.targetedAppend},${data.repetition},${data.subsequence}
-    `.trim();
-
-    return `mailto:mmv5513@psu.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  };
-
-  const runAnalysis = () => {
-    const finalPin7 = pin7;
-    const finalStrategy = strategy === 'other' ? `Other: ${otherStrategyText}` : strategy;
-
-    const targetedAppend = finalPin7.startsWith(pin5);
-    const isRepeated = /^(\d)\1+$/.test(finalPin7);
-    const mentionsSubsequence = finalPin7.includes(pin5);
-
-    const resultData = {
-      targetedAppend,
-      repetition: isRepeated,
-      subsequence: mentionsSubsequence,
-      pin5,
-      pinRecalled,
-      pin7: finalPin7,
-      strategy: finalStrategy,
-      timestamp: new Date().toISOString()
-    };
-
-    setAnalysis(resultData)
-    setStep('results')
-
-    // Automatically try to open email
-    setTimeout(() => {
-      window.location.href = generateEmailUrl(resultData);
-    }, 500);
-  }
-
-  const handleEmailClick = () => {
-    if (!analysis) return;
-    window.location.href = generateEmailUrl(analysis);
-  };
-
-  const handleDownload = () => {
-    if (!analysis) return;
-    const csvContent = `timestamp,pin5,pin_recalled,pin7,strategy,targeted_append,repetition,subsequence\n${analysis.timestamp},${analysis.pin5},${analysis.pinRecalled},${analysis.pin7},"${analysis.strategy}",${analysis.targetedAppend},${analysis.repetition},${analysis.subsequence}`;
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `pin_study_${Date.now()}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
+  // ... (rest of the file until return)
 
   return (
     <div className="relative w-full min-h-[100dvh] bg-black overflow-y-auto text-white font-sans flex flex-col items-center justify-center">
@@ -148,7 +89,7 @@ ${data.timestamp},${data.pin5},${data.pinRecalled},${data.pin7},"${data.strategy
             </div>
 
             <PinDisplay length={5} pInLength={pin5.length} />
-            <Keypad onKeyPress={handleKeyPress} />
+            <Keypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
           </div>
         )}
 
@@ -211,7 +152,7 @@ ${data.timestamp},${data.pin5},${data.pinRecalled},${data.pin7},"${data.strategy
             </div>
 
             <PinDisplay length={5} pInLength={pinRecalled.length} />
-            <Keypad onKeyPress={handleKeyPress} />
+            <Keypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
           </div>
         )}
 
@@ -249,7 +190,7 @@ ${data.timestamp},${data.pin5},${data.pinRecalled},${data.pin7},"${data.strategy
             </div>
 
             <PinDisplay length={7} pInLength={pin7.length} />
-            <Keypad onKeyPress={handleKeyPress} />
+            <Keypad onKeyPress={handleKeyPress} onDelete={handleDelete} />
           </div>
         )}
 

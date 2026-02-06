@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Keypad = ({ onKeyPress, disabled }) => {
+const Keypad = ({ onKeyPress, onDelete, disabled }) => {
     const digitMap = [
         { num: 1, letters: '' },
         { num: 2, letters: 'ABC' },
@@ -31,7 +31,21 @@ const Keypad = ({ onKeyPress, disabled }) => {
             <KeyButton key={0} num={0} letters="" onKeyPress={onKeyPress} disabled={disabled} />
 
             {/* Empty spacer */}
-            <div />
+            {/* Delete button */}
+            <button
+                onClick={() => !disabled && onDelete && onDelete()}
+                className={`w-20 h-20 rounded-full text-white text-xl font-light 
+                flex items-center justify-center transition-opacity duration-150 
+                active:opacity-50 select-none touch-manipulation
+                ${disabled ? 'opacity-30 cursor-not-allowed' : 'hover:opacity-80'}`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"></path>
+                    <line x1="18" y1="9" x2="12" y2="15"></line>
+                    <line x1="12" y1="9" x2="18" y2="15"></line>
+                </svg>
+            </button>
         </div>
     );
 };
