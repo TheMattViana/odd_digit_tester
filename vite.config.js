@@ -8,5 +8,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+
   base: '/odd_digit_tester/',
 })

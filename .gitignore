@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+study_results.csv
+instructions.txt
+prompts.txt

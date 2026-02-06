@@ -69,3 +69,52 @@ add the letters under the buttons like abc under 1, and make the numbers white s
 ---
 
 write all prompts I used in a prompts.txt file
+
+---
+
+add and push this to a github webpage. https://github.com/TheMattViana/odd_digit_tester.git
+
+remember to make it look good on a phone
+
+---
+
+always always always keep prompts.txt updated
+
+---
+
+change the end to be a thank you for completing, and make it save the passwords in a way our research team can easily see them. maybe a csv / log, or email my work email with response mmv5513@psu.edu
+
+---
+
+the results should automatically be saved in a way I can see them as the researcher
+
+additionally:
+update the prompts txt. and see instructions .txt for a final detailed update 
+
+Instructions.txt content:
+
+Baseline Selection (The "Before" Snapshot)
+
+What it is: Participants are asked to create a 5-digit PIN that they would actually use on a smartphone.
+
+Why: This establishes a control point. Since 5-digit PINs are rare, the researchers need to understand how people naturally create them (e.g., do they use dates? patterns?) before any "upgrade" pressure is applied.
+
+Distractor/Recall (The Memory Test)
+
+What it is: Immediately after choosing a PIN, participants answer unrelated questions (distractors) about their phone usage to clear their short-term memory. They are then asked to type their 5-digit PIN again.
+
+Why: Real-world PINs must be memorable. If a participant creates a complex PIN but forgets it 30 seconds later, it isn't a valid data point for a study on authentication. This phase filters out random or unmemorable entries.
+
+Upgrade Selection (The Main Experiment)
+
+What it is: Participants are forced to change their authenticated 5-digit PIN to a new 7-digit PIN based on a specific scenario (the "treatment").
+
+Why: This simulates the real-world frustration of mandatory security updates. The researchers want to see if users get lazy when forced to upgrade (e.g., by just adding "12" to the end of their old PIN) or if specific warnings (like "your PIN was breached") encourage them to choose safer numbers..
+
+---
+
+I have added our full methds to instrictions.txt make sure the app matches that
+
+When I open the app on my phone the 0 digit is cut off in the page and I cant even scroll down to fix it
+
+I DONT HAVE A SERVER, WE HAE TO SEND THIS TO MY EMAIL AUTOMNATICALLY
