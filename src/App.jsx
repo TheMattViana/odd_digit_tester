@@ -153,7 +153,7 @@ ${data.timestamp},${data.pin5},${data.pinRecalled},${data.pin7},"${data.strategy
         )}
 
         {step === 'distractor' && (
-          <div className="flex-1 flex flex-col animate-fade-in overflow-y-auto">
+          <div className="flex-1 flex flex-col animate-fade-in">
             <div className="mt-10 mb-6 text-center">
               <div className="w-16 h-16 bg-white/10 rounded-full mx-auto mb-6 flex items-center justify-center backdrop-blur-md">
                 <span className="text-3xl">📱</span>
