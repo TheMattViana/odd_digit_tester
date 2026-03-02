@@ -10,4 +10,9 @@ export default defineConfig({
   ],
 
   base: '/odd_digit_tester/',
+  server: {
+    proxy: {
+      '/api': 'http://localhost:3001'
+    }
+  }
 })

@@ -22,6 +22,26 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Security and Keys
+*.pem
+private_key.pem
+.env
+.env.*
+
+# Local Data and Datasets
 study_results.csv
+rockyou.txt
+rockyou_*.json
+*.csv
+
+# Offline Analysis and Server Scripts (not needed for GitHub Pages)
+server.js
+decrypt_results.js
+extract_rockyou_pins.cjs
+attacker_models.cjs
+
+# Documentation / Scratchpads
+methods.txt
 instructions.txt
 prompts.txt
